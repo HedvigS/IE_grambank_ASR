@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+**.DS_Store
+**R.Rproj
+.Rbuildignore
+SH.misc.Rproj
+code/groundhog_libraries_2023-08-03/*
