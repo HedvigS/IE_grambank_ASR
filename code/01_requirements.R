@@ -4,8 +4,6 @@
 #### PACKAGE INSTALLATION AND LOADING ########
 # packages are installed given specific versions of date, to increase replicability of the code 
 
-
-
 pkgs = c( "dplyr",
           "readr", 
           "tidyr",
@@ -15,37 +13,38 @@ pkgs = c( "dplyr",
           "reshape2", 
           "remotes",
           "phytools",
-          "BiocManager",
+#          "BiocManager",
           "adephylo",
           "tibble",
-          "colourvalues",
+         # "colourvalues",
           "ape")
 
 pkgs <- unique(pkgs)
 
-groundhog_date = "2023-08-03"
-
-if(!("groundhog"%in% rownames(installed.packages()))){
-  utils::install.packages("groundhog")
-}
-library(groundhog)
-
-
-groundhog_dir <- paste0("groundhog_libraries_", groundhog_date)
-
-if(!dir.exists(groundhog_dir)){
-  dir.create(groundhog_dir)
+for(i in pkgs){
+  library(i, character.only = T)
 }
 
-groundhog::set.groundhog.folder(groundhog_dir)
 
-groundhog.library(pkgs, groundhog_date)
 
 
 if(!("rcldf"%in% rownames(installed.packages()))){
   install_github("SimonGreenhill/rcldf", dependencies = TRUE, ref = "v1.2.0")
 }
 library(rcldf)
+
+
+if(!("rgrambank"%in% rownames(installed.packages()))){
+  install_github("HedvigS/rgrambank", dependencies = TRUE)
+}
+library(rgrambank)
+
+
+if(!("SH.misc"%in% rownames(installed.packages()))){
+  install_github("HedvigS/SH.misc", dependencies = TRUE)
+}
+library(SH.misc)
+
 
 if(!("ggtree"%in% rownames(installed.packages()))){
   BiocManager::install("ggtree") #version v3.11.0
@@ -62,6 +61,16 @@ if(!dir.exists(dir)){
   dir.create(dir)
 }
 
+dir <- "output/results/"
+if(!dir.exists(dir)){
+  dir.create(dir)
+}
+
+
+dir <- "output/plots/ASR_ML_tree/"
+if(!dir.exists(dir)){
+  dir.create(dir)
+}
 
 
 dir <- "data"
@@ -69,7 +78,7 @@ if(!dir.exists(dir)){
   dir.create(dir)
 }
 
-dir <- "data/processed_data"
+dir <- "output/processed_data"
 if(!dir.exists(dir)){
   dir.create(dir)
 }
@@ -80,5 +89,3 @@ if(!dir.exists(dir)){
 }
 
 
-
-source("01_requirements_further.R")
