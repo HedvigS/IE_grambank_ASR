@@ -12,3 +12,5 @@ code/output/plots/tree_coverage.png
 code/code.Rproj
 code/data/processed_data/Grambank_2.0_ValueTable.tsv
 code/data/processed_data/GB_v2.0_LanguageTable.tsv
+/code/output/plots
+/code/output/processed_data
